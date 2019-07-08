@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.hanoitest_01.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "H:\\hanoi test_01\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "hanoi test_01 [Testing]"
+        }
+      }
+    }
+  ]
+}
