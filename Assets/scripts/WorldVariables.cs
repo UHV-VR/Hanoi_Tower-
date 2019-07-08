@@ -10,6 +10,5 @@ public static class WorldVariables
     // to see if the remote trigger is pressed 
     //is pressed 
     public static bool triggerDown = false;
-    public static int winningSolution = 0; 
-
+    public static int winningSolution = 0;
 }

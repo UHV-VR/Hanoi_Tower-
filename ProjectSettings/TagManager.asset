@@ -10,6 +10,8 @@ TagManager:
   - layer 02
   - bottomCol
   - topCol
+  - interactable
+  - 'non-interactable '
   layers:
   - Default
   - TransparentFX
