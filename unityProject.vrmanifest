@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.hanoitest_01.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\UHVCAVEDoD02\\Desktop\\hanoi test_01\\actions.json",
+      "action_manifest_path": "C:\\Users\\UHVCAVEDoD02\\Desktop\\hanoi test_02\\actions.json",
       "strings": {
         "en_us": {
           "name": "hanoi test_01 [Testing]"
