@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bottom_check : MonoBehaviour
 {
-   public GameObject collide;
+
     public GameObject replacement;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,9 @@ public class bottom_check : MonoBehaviour
     {
         if( other.name == "bottom_hanoi (1)")
             {
-            replacement.transform.position = collide.transform.position;
+            replacement.transform.position = other.transform.position;
             replacement.SetActive(true);
-            collide.SetActive(false);
+            other.gameObject.SetActive(false);
             WorldVariables.winningSolution++;
         }
     }

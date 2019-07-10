@@ -34,10 +34,15 @@ public class layer2_on_off : MonoBehaviour
             // checks to see if there is a smaller peice below it 
             if (hitPos.normal.y > 0 && colInfo.collider.name == "top_hanoi (1)")
             {
-               
-                     Debug.Log("executed top layer of layer 002");
-                     audiosource.PlayOneShot(wrongSound, .2f);
-                    
+                if (!WorldVariables.triggerDown)
+                {
+                    //Debug.Log("executed top layer of layer 002");
+                    if (!audiosource.isPlaying)
+                    {
+                        audiosource.PlayOneShot(wrongSound, .2f);
+                    }
+                    gameObject.transform.position = WorldVariables.towerpast;
+                }
             }
         }
      

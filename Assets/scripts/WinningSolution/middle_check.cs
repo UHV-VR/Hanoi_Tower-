@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class middle_check : MonoBehaviour
 {
-    public GameObject collide;
     public GameObject replacement;
 
     // Start is called before the first frame update
@@ -22,9 +21,9 @@ public class middle_check : MonoBehaviour
     {
         if (other.name == "middle_hanoi (1)" && WorldVariables.winningSolution == 1)
         {
-            replacement.transform.position = collide.transform.position;
+            replacement.transform.position = other.transform.position;
             replacement.SetActive(true);
-            collide.SetActive(false);
+            other.gameObject.SetActive(false);
             WorldVariables.winningSolution++;
         }
     }

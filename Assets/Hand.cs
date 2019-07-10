@@ -83,6 +83,15 @@ public class Hand : MonoBehaviour
         {
             m_CurrentInteractable.m_ActiveHand.Drop();
         }
+
+        // ASSIGN THE NAME TO THE WORLD VARIABLE HELDNAME 
+        WorldVariables.heldName = m_CurrentInteractable.name;
+       // print("assigned heldname with: ");
+       // print(WorldVariables.heldName);
+
+        //ASSIGN THE CURRENT TOWER TO THE PREVIOUS TOWER 
+        WorldVariables.towerpast = WorldVariables.towerpresent;
+
         //position to controller 
         m_CurrentInteractable.transform.position = transform.position;
 
@@ -110,8 +119,16 @@ public class Hand : MonoBehaviour
         targetbody.velocity = m_Pose.GetVelocity();
         targetbody.angularVelocity = m_Pose.GetAngularVelocity();
 
+
+
         // TRYING TO RESET THE ROTATION OF THE OBJECT BEFORE IT IS SET TOWN ON A TOWER 
         targetbody.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+
+        // ASSIGNS TO THE TOP OF THE TOWER IF IT IS IN TRIGGER RANGE 
+        if (WorldVariables.inRange)
+        {
+            targetbody.position = WorldVariables.towerpresent;
+        }
         //detach 
         m_joint.connectedBody = null;
 

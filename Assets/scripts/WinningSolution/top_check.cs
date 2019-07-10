@@ -24,7 +24,10 @@ public class top_check : MonoBehaviour
         if (other.name == "top_hanoi (1)" && WorldVariables.winningSolution == 2)
         {
             WorldVariables.winningSolution++;
-             audiosource.PlayOneShot(win, .7f);
+            if (!audiosource.isPlaying)
+            {
+                audiosource.PlayOneShot(win, .2f);
+            }
         }
     }
 }

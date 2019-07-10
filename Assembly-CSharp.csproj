@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\baseInteraction.cs" />
     <Compile Include="Assets\Hand.cs" />
     <Compile Include="Assets\Interactable.cs" />
     <Compile Include="Assets\scripts\peices\layer2_on_off.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Assets\scripts\WinningSolution\middle_check.cs" />
     <Compile Include="Assets\scripts\WinningSolution\top_check.cs" />
     <Compile Include="Assets\scripts\WorldVariables.cs" />
+    <Compile Include="Assets\touchBase.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/UHVCAVEDoD02/Desktop/hanoi test_02/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

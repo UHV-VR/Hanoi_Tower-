@@ -28,8 +28,8 @@ public class on_off_interaction : MonoBehaviour
 
         foreach (ContactPoint hitPos in colInfo.contacts)
         {
-            //Debug.Log(colInfo.collider.tag);
-            // Debug.Log(hitPos.normal);
+            //Debug.Log(colInfo.collider.name);
+           //  Debug.Log(hitPos.normal);
             if (hitPos.normal.y < 0 && (colInfo.collider.name == "middle_hanoi (1)" || colInfo.collider.name == "top_hanoi (1)"))
             {
                 replacement.transform.position = gameObject.transform.position;
@@ -39,31 +39,20 @@ public class on_off_interaction : MonoBehaviour
             }
             if (hitPos.normal.y > 0 && (colInfo.collider.name == "middle_hanoi (1)" || colInfo.collider.name == "top_hanoi (1)"))
             {
-
-                // Debug.Log("executed top layer of layer 000");
-                if (!audiosource.isPlaying)
+                if (!WorldVariables.triggerDown)
                 {
-                    audiosource.PlayOneShot(wrongSound, .2f);
-                }
-
-
-            }
-            else if (colInfo.collider.tag == "bases")
-            {
-                if (!audiosource.isPlaying)
-                {
-                    audiosource.PlayOneShot(correct, .2f);
+                    //Debug.Log("executed top layer of layer 000");
+                    if (!audiosource.isPlaying)
+                    {
+                        audiosource.PlayOneShot(wrongSound, .2f);
+                    }
+                    gameObject.transform.position = WorldVariables.towerpast;
                 }
             }
+           
         }
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "bottomCol")
-        {
-
-        }
-    }
+    
 }
