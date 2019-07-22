@@ -58,6 +58,7 @@
      <Compile Include="Assets\baseInteraction.cs" />
      <Compile Include="Assets\Hand.cs" />
      <Compile Include="Assets\Interactable.cs" />
+     <Compile Include="Assets\Piece.cs" />
      <Compile Include="Assets\scripts\peices\Clayer2_on_off.cs" />
      <Compile Include="Assets\scripts\peices\Clayer2_replace.cs" />
      <Compile Include="Assets\scripts\peices\on_off_interaction.cs" />
@@ -67,6 +68,7 @@
      <Compile Include="Assets\scripts\WinningSolution\top_check.cs" />
      <Compile Include="Assets\scripts\WorldVariables.cs" />
      <Compile Include="Assets\touchBase.cs" />
+     <Compile Include="Assets\tower.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Virtual Reality/github_VR/Hanoi_Towers/Hanoi_Tower-/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

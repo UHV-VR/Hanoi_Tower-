@@ -17,6 +17,9 @@ public class Hand : MonoBehaviour
     public List<Interactable> m_ContactInteractable = new List<Interactable>();
     //change this to private later!!
 
+    public bool triggerDown = false;
+    public string held = "null";
+
     // m = movement 
     private void Awake()
     {
@@ -69,7 +72,8 @@ public class Hand : MonoBehaviour
     public void pickup()
     {
         // sets the static to true 
-        WorldVariables.triggerDown = true;
+        triggerDown = true;
+        
 
         //get nearest 
         m_CurrentInteractable = GetNearestInteractable();
@@ -85,7 +89,7 @@ public class Hand : MonoBehaviour
         }
 
         // ASSIGN THE NAME TO THE WORLD VARIABLE HELDNAME 
-        WorldVariables.heldName = m_CurrentInteractable.name;
+        held = m_CurrentInteractable.name;
        // print("assigned heldname with: ");
        // print(WorldVariables.heldName);
 
@@ -135,7 +139,11 @@ public class Hand : MonoBehaviour
         //clear 
         m_CurrentInteractable.m_ActiveHand = null;
         m_CurrentInteractable = null;
-       
+
+
+        triggerDown = false;
+        held = "null";
+
     }
     /// <summary>
     ///  want to get the nearest interactable object to the remote 

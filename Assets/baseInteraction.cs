@@ -38,7 +38,7 @@ public class baseInteraction : MonoBehaviour
 
     //on trigger state
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
 
         //  print("is interacting with the trigger");
