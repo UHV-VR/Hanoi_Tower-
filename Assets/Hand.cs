@@ -135,6 +135,7 @@ public class Hand : MonoBehaviour
         //clear 
         m_CurrentInteractable.m_ActiveHand = null;
         m_CurrentInteractable = null;
+       
     }
     /// <summary>
     ///  want to get the nearest interactable object to the remote 

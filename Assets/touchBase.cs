@@ -35,10 +35,11 @@ public class touchBase : MonoBehaviour
                 return;
 
             }
-          //  Debug.Log(" transform to new position");
+            Debug.Log(" transform to new position");
             gameObject.transform.position = WorldVariables.towerpast;
             gameObject.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             Rigidbody reset = gameObject.GetComponent<Rigidbody>();
+            //does not work??
             reset.angularVelocity = Vector3.zero;
             reset.velocity = Vector3.zero;
         }

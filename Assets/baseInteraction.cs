@@ -36,7 +36,7 @@ public class baseInteraction : MonoBehaviour
         }
     }
 
-
+    //on trigger state
 
     void OnTriggerEnter(Collider other)
     {
