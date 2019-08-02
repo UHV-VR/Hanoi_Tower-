@@ -22,6 +22,10 @@ public class sound
     {
         
     }
+    public bool isplaying()
+    {
+        return (source.isPlaying);
+    }
 
     // Update is called once per frame
     void Update()

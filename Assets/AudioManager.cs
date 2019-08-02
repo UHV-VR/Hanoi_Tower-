@@ -20,10 +20,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    //  plays the audio for name provided 
     public void play(string name)
     {
         sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null)
+        //  PURHAPS NEED TO DELAY THE IS PLAYING BY RANDOM VALUES??
+        //  NEED TO FIGURE THIS OUT!
+        if (s == null && !(s.isplaying()))
         {
             Debug.Log("sound: " + name + " is not found ");
             return;
@@ -31,3 +34,5 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 }
+
+            
