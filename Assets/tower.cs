@@ -30,7 +30,7 @@ public class tower : MonoBehaviour
     //can get rid of???
 
     //keeps the order of the pieces the tower interacts with 
-    private int[] order = new int[] { 5, 5, 5, 5 };
+    public GameObject[] order = new GameObject[3];
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,10 @@ public class tower : MonoBehaviour
         opaqueColor = seethroughColor;
         opaqueColor.a = 1;
         tip = gameObject.transform.GetChild(0).transform.position;
+        for(int i = 0; i < 3; i++)
+        {
+            order[i] = null;    
+        }
     }
 
     // Update is called once per frame
@@ -79,7 +83,7 @@ public class tower : MonoBehaviour
            // Debug.Log("is in loop on " + i + " itteration");
            // Debug.Log(i + " element is " + order[i]);
             //looks for first empty object 
-            if (order[i] == 5)
+            if (order[i] == null)
             {
                // Debug.Log("content of i is 5");
                 // sees if the element before it has an object that is smaller 
@@ -92,7 +96,7 @@ public class tower : MonoBehaviour
                     return;
                 }
 
-                else if (order[i - 1] > other.GetComponent<Collider>().GetComponent<Piece>().tagPosition)
+                else if (order[i - 1].GetComponent<Piece>().tagPosition > other.GetComponent<Collider>().GetComponent<Piece>().tagPosition)
                 {
                    // Debug.Log("the element below i is too small");
                     //resets the peice to its last known tower 
@@ -122,9 +126,13 @@ public class tower : MonoBehaviour
             inrange = false;
             for (int i = 0; i < order.Length; i++)
             {
-                if (other.GetComponent<Piece>().tagPosition == order[i])
+                if (order[i] == null)
                 {
-                    order[i] = 5;
+                    return;
+                }
+                if (other.GetComponent<Piece>().tagPosition == order[i].GetComponent<Piece>().tagPosition)
+                {
+                    order[i] = null;
                     return;
                 }
             }
@@ -146,8 +154,13 @@ public class tower : MonoBehaviour
         GetComponent<Renderer>().material.SetColor("_Color", opaqueColor);
         inrange = false;
 
-        order[element] = other.GetComponent<Piece>().tagPosition;
+        order[element] = other.gameObject;
 
+    }
+
+   public GameObject getElement(int element)
+    {
+        return order[element];
     }
 
   

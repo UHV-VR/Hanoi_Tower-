@@ -71,6 +71,8 @@
      <Compile Include="Assets\sound.cs" />
      <Compile Include="Assets\touchBase.cs" />
      <Compile Include="Assets\tower.cs" />
+     <Compile Include="Assets\Win.cs" />
+     <Compile Include="Assets\WinSolution.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Virtual Reality/github_VR/Hanoi_Towers/Hanoi_Tower-/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

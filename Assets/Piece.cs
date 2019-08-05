@@ -101,5 +101,6 @@ public class Piece : MonoBehaviour
     {
         move(tower);
     }
+    
 
 }
