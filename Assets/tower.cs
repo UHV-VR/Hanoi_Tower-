@@ -65,13 +65,18 @@ public class tower : MonoBehaviour
             inrangename = other.name;
 
         }
-        if ((!rright.GetComponent<Hand>().triggerDown && !rleft.GetComponent<Hand>().triggerDown) )
+        if ((!rright.GetComponent<Hand>().triggerDown && !rleft.GetComponent<Hand>().triggerDown))
         {
             //checks to see if inrange is true and the collider with the trigger is what WAS held by the remote   
             if (inrange && other.name == inrangename)
             {
                 check(other);
             }
+        }
+        else
+        {
+            //THIS DOES NOT WORK, IT RESETS THE PEICES AT THE VERY BEGINING
+            other.GetComponent<Collider>().GetComponent<Piece>().reset();
         }
     }
 
@@ -161,6 +166,10 @@ public class tower : MonoBehaviour
    public GameObject getElement(int element)
     {
         return order[element];
+    }
+    public bool getInRange()
+    {
+        return inrange;
     }
 
   

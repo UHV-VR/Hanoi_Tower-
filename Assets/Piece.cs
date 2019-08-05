@@ -49,6 +49,8 @@ public class Piece : MonoBehaviour
                 {
                     gameObject.tag = "bases";
                     gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.grey);
+                    // gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                    gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 }
             }
 
@@ -67,22 +69,48 @@ public class Piece : MonoBehaviour
             //reassigns it to the last known tower 
             move(tower);
         }
+       
     }
 
     void OnCollisionExit(Collision other)
     {
+
+
+        foreach (ContactPoint hitPos in other.contacts)
+        {
+            //Debug.Log(colInfo.collider.name);
+            //  Debug.Log(hitPos.normal);
+
+            //sees if the collider is an interactable piece
+            if (other.gameObject.GetComponent<Piece>())
+            {
+                //if the collision is happening on the bottom
+                if (hitPos.normal.y < 0 && (other.gameObject.GetComponent<Piece>().tagPosition > tagPosition))
+                {
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_Color", offColor);
+                    gameObject.tag = "interactable";
+                    //gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    // Debug.Log("im leaving and this is why");
+                    //  Debug.Log(other.transform.name);
+                }
+            }
+
+        }
         //sees if the collider leaving is a piece 
-        if (other.gameObject.GetComponent<Piece>())
+        /*if (other.gameObject.GetComponent<Piece>())
         {
             // sees if it is a piece that is smaller 
             if (other.gameObject.GetComponent<Piece>().tagPosition > tagPosition)
             {
                 gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_Color", offColor);
                 gameObject.tag = "interactable";
-               // Debug.Log("im leaving and this is why");
-              //  Debug.Log(other.transform.name);
+                //gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                // Debug.Log("im leaving and this is why");
+                //  Debug.Log(other.transform.name);
             }
-        }
+        }*/
     }
 
     public void move(Vector3 pos)

@@ -56,20 +56,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AudioManager.cs" />
-     <Compile Include="Assets\baseInteraction.cs" />
      <Compile Include="Assets\Hand.cs" />
      <Compile Include="Assets\Interactable.cs" />
      <Compile Include="Assets\Piece.cs" />
-     <Compile Include="Assets\scripts\peices\Clayer2_on_off.cs" />
-     <Compile Include="Assets\scripts\peices\Clayer2_replace.cs" />
-     <Compile Include="Assets\scripts\peices\on_off_interaction.cs" />
-     <Compile Include="Assets\scripts\peices\replace.cs" />
-     <Compile Include="Assets\scripts\WinningSolution\bottom_check.cs" />
-     <Compile Include="Assets\scripts\WinningSolution\middle_check.cs" />
-     <Compile Include="Assets\scripts\WinningSolution\top_check.cs" />
-     <Compile Include="Assets\scripts\WorldVariables.cs" />
      <Compile Include="Assets\sound.cs" />
-     <Compile Include="Assets\touchBase.cs" />
      <Compile Include="Assets\tower.cs" />
      <Compile Include="Assets\Win.cs" />
      <Compile Include="Assets\WinSolution.cs" />

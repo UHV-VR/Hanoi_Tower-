@@ -20,6 +20,8 @@ public class Hand : MonoBehaviour
     public bool triggerDown = false;
     public string held = "null";
 
+    public GameObject otherRemote; 
+
     // m = movement 
     private void Awake()
     {
@@ -71,6 +73,11 @@ public class Hand : MonoBehaviour
     /// </summary>
     public void pickup()
     {
+        if (otherRemote.GetComponent<Hand>().triggerDown)
+        {
+            return;
+        }
+            
         // sets the static to true 
         triggerDown = true;
         
@@ -93,8 +100,7 @@ public class Hand : MonoBehaviour
        // print("assigned heldname with: ");
        // print(WorldVariables.heldName);
 
-        //ASSIGN THE CURRENT TOWER TO THE PREVIOUS TOWER 
-        WorldVariables.towerpast = WorldVariables.towerpresent;
+        //ASSIGN THE CURRENT TOWER TO THE PREVIOUS TOWER
 
         //position to controller 
         m_CurrentInteractable.transform.position = transform.position;
@@ -109,9 +115,7 @@ public class Hand : MonoBehaviour
 
     public void Drop()
     {
-        // sets the static to false
-        WorldVariables.triggerDown = false;
-
+        
         //null check
         if (!m_CurrentInteractable)
         {
@@ -128,11 +132,7 @@ public class Hand : MonoBehaviour
         // TRYING TO RESET THE ROTATION OF THE OBJECT BEFORE IT IS SET TOWN ON A TOWER 
         targetbody.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
-        // ASSIGNS TO THE TOP OF THE TOWER IF IT IS IN TRIGGER RANGE 
-        if (WorldVariables.inRange)
-        {
-            targetbody.position = WorldVariables.towerpresent;
-        }
+       
         //detach 
         m_joint.connectedBody = null;
 
