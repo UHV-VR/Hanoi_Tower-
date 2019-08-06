@@ -23,6 +23,7 @@ public class tower : MonoBehaviour
     public GameObject rleft;
 
     //tells us if the object that the remote has is in range and what its name is 
+   
     private bool inrange = false;
     private string inrangename = "null";
 
@@ -73,13 +74,11 @@ public class tower : MonoBehaviour
                 check(other);
             }
         }
-        else
-        {
-            //THIS DOES NOT WORK, IT RESETS THE PEICES AT THE VERY BEGINING
-            other.GetComponent<Collider>().GetComponent<Piece>().reset();
-        }
+        
+       
     }
 
+    //checks to see if the peice follows the rules if placed on this tower 
     private void check(Collider other)
     {
         //looks through the array of objects that are colliding with the tower
@@ -100,7 +99,7 @@ public class tower : MonoBehaviour
                     FindObjectOfType<AudioManager>().play("correct");
                     return;
                 }
-
+                //sees if the peice below the found element is smaller than the peice we have 
                 else if (order[i - 1].GetComponent<Piece>().tagPosition > other.GetComponent<Collider>().GetComponent<Piece>().tagPosition)
                 {
                    // Debug.Log("the element below i is too small");
@@ -121,14 +120,15 @@ public class tower : MonoBehaviour
         }
     }
 
-    //when an object leaves the trigger space 
+    //when an object leaves the trigger space, resets the towers color and removes the peice from the array of colliding objects 
     void OnTriggerExit(Collider other)
     {
+        inrange = false;
         if (other.tag == "interactable")
         {
            // GetComponent<Renderer>().material.SetColor("_Color", opaqueColor);
             SetOpaque(opaqueColor);
-            inrange = false;
+            
             for (int i = 0; i < order.Length; i++)
             {
                 if (order[i] == null)

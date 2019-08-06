@@ -587,6 +587,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!21 &708053695
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &742875607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1037,6 +1071,7 @@ MonoBehaviour:
   triggerDown: 0
   held: null
   otherRemote: {fileID: 1611440989}
+  towers: []
 --- !u!138 &941322353
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -1117,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f76cc8a3db4f498a471f3caccde27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Opacity: 1
+  Opacity: 0.5
   rright: {fileID: 1611440989}
   rleft: {fileID: 941322347}
   order:
@@ -1135,8 +1170,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.5184865, y: 3.530456, z: 5.756846}
-  m_Center: {x: 0.049529076, y: 1.3355374, z: 0.055864453}
+  m_Size: {x: 4.5184865, y: 8.468715, z: 5.756846}
+  m_Center: {x: 0.049529076, y: 3.804667, z: 0.055864453}
 --- !u!65 &1005313361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1699,7 +1734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f76cc8a3db4f498a471f3caccde27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Opacity: 1
+  Opacity: 0.5
   rright: {fileID: 1611440989}
   rleft: {fileID: 941322347}
   order:
@@ -1717,8 +1752,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.520129, y: 3.5686333, z: 5.621327}
-  m_Center: {x: -0.059216417, y: 1.3164488, z: -0.11098484}
+  m_Size: {x: 4.520129, y: 8.473301, z: 5.621327}
+  m_Center: {x: -0.059216417, y: 3.7687826, z: -0.11098484}
 --- !u!65 &1189974471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1972,40 +2007,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1239237533
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1256028777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2411,7 @@ MonoBehaviour:
   triggerDown: 0
   held: null
   otherRemote: {fileID: 941322347}
+  towers: []
 --- !u!138 &1611440995
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -2424,7 +2426,7 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!43 &1672109912
+--- !u!43 &1712030173
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2738,11 +2740,11 @@ PrefabInstance:
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1239237533}
+      objectReference: {fileID: 708053695}
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1672109912}
+      objectReference: {fileID: 1712030173}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
 --- !u!1 &1969138167 stripped
@@ -2932,7 +2934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f76cc8a3db4f498a471f3caccde27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Opacity: 1
+  Opacity: 0.5
   rright: {fileID: 1611440989}
   rleft: {fileID: 941322347}
   order:
@@ -2950,8 +2952,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.6311235, y: 3.587721, z: 5.5782275}
-  m_Center: {x: 0.0037189324, y: 1.3069049, z: -0.08771379}
+  m_Size: {x: 4.6311235, y: 8.559575, z: 5.5782275}
+  m_Center: {x: 0.0037189324, y: 3.792832, z: -0.08771379}
 --- !u!65 &1170377103850395688
 BoxCollider:
   m_ObjectHideFlags: 0

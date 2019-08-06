@@ -20,13 +20,16 @@ public class Hand : MonoBehaviour
     public bool triggerDown = false;
     public string held = "null";
 
-    public GameObject otherRemote; 
-
+    //needed to fix various bugs 
+    public GameObject otherRemote;
+    public GameObject[] towers;
+    private int each = 0;
     // m = movement 
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
         m_joint = GetComponent<FixedJoint>();
+        towers = GameObject.FindGameObjectsWithTag("bases");
     }
     // Update is called once per frame
     void Update()
@@ -95,12 +98,11 @@ public class Hand : MonoBehaviour
             m_CurrentInteractable.m_ActiveHand.Drop();
         }
 
-        // ASSIGN THE NAME TO THE WORLD VARIABLE HELDNAME 
+        // ASSIGN THE NAME TO  VARIABLE HELDNAME 
         held = m_CurrentInteractable.name;
        // print("assigned heldname with: ");
        // print(WorldVariables.heldName);
 
-        //ASSIGN THE CURRENT TOWER TO THE PREVIOUS TOWER
 
         //position to controller 
         m_CurrentInteractable.transform.position = transform.position;
@@ -129,10 +131,29 @@ public class Hand : MonoBehaviour
 
 
 
-        // TRYING TO RESET THE ROTATION OF THE OBJECT BEFORE IT IS SET TOWN ON A TOWER 
+        // TRYING TO RESET THE ROTATION OF THE OBJECT BEFORE IT IS SET dOWN ON A TOWER 
         targetbody.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
-       
+        int interation = 1;
+        //sees that if it wasn't droped from within a range and then resets it to the original tower 
+        foreach (GameObject towerObj in towers)
+        {
+            if (!towerObj.GetComponent<tower>().getInRange())
+            {
+                Debug.Log(" tower " + interation + " is not in range");
+                each++;
+            }
+            else
+                Debug.Log(" tower " + interation + " is in in range");
+            interation++;
+        }
+        if (each == 3)
+        {
+            Debug.Log("piece is being reset");
+            targetbody.gameObject.GetComponent<Piece>().reset();
+        }
+        each = 0;
+
         //detach 
         m_joint.connectedBody = null;
 
