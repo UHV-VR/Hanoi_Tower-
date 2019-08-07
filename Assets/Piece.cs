@@ -16,7 +16,7 @@ public class Piece : MonoBehaviour
    // [SerializeField]
     public GameObject rleft;
 
-    //public GameObject[] towers;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +52,9 @@ public class Piece : MonoBehaviour
                     gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.grey);
                     // gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                    //ADDED HERE!
+                    gameObject.GetComponent<Interactable>().enabled = false;
                 }
             }
 
@@ -70,32 +73,34 @@ public class Piece : MonoBehaviour
             //reassigns it to the last known tower 
             move(tower);
         }
-        //sees that if it wasn't droped from within a range and then resets it to the original tower 
-        /*foreach (GameObject towerObj in towers)
-        {
-            if (!towerObj.GetComponent<tower>().getInRange())
-            {
-                move(tower);
-            }
-        }*/
+       
        
     }
 
     void OnCollisionExit(Collision other)
     {
+        
         //sees if the collider leaving is a piece 
-        if (other.gameObject.GetComponent<Piece>())
-        {
-            // sees if it is a piece that is smaller 
-            if (other.gameObject.GetComponent<Piece>().tagPosition > tagPosition)
-            {
-                gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_Color", offColor);
-                gameObject.tag = "interactable";
-                gameObject.GetComponent<Rigidbody>().isKinematic = false;
-                // Debug.Log("im leaving and this is why");
-                //  Debug.Log(other.transform.name);
-            }
-        }
+         if (other.gameObject.GetComponent<Piece>())
+         {
+             // sees if it is a piece that is smaller 
+             if (other.gameObject.GetComponent<Piece>().tagPosition > tagPosition)
+             {
+                if ((rright.GetComponent<Hand>().held == other.gameObject.name || rleft.GetComponent<Hand>().held == other.gameObject.name))
+                {
+                
+                 gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_Color", offColor);
+                 gameObject.tag = "interactable";
+                 //gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                 gameObject.GetComponent<Interactable>().enabled = true;
+
+
+                }
+                 //gameObject.GetComponent<Interactable>().enabled = true;
+                 // Debug.Log("im leaving and this is why");
+                 //  Debug.Log(other.transform.name);
+             }
+         }
 
     }
  

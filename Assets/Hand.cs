@@ -100,8 +100,9 @@ public class Hand : MonoBehaviour
 
         // ASSIGN THE NAME TO  VARIABLE HELDNAME 
         held = m_CurrentInteractable.name;
-       // print("assigned heldname with: ");
-       // print(WorldVariables.heldName);
+        m_CurrentInteractable.GetComponent<Rigidbody>().isKinematic = false;
+        // print("assigned heldname with: ");
+        // print(WorldVariables.heldName);
 
 
         //position to controller 
