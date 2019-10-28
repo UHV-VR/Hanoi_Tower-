@@ -39,37 +39,42 @@ public class Piece : MonoBehaviour
     {
         foreach (ContactPoint hitPos in collisionInfo.contacts)
         {
-            //Debug.Log(colInfo.collider.name);
+           // Debug.Log(collisionInfo.collider.name);
             //  Debug.Log(hitPos.normal);
 
             //sees if the collider is an interactable piece
-            if (collisionInfo.gameObject.GetComponent<Piece>())
+            //if (collisionInfo.gameObject.GetComponent<Piece>())
+            //  THIS IS THE NEW SCRIPT TO TRY 
+            if(collisionInfo.transform.CompareTag("interactable"))
             { 
                 //if the collision is happening on the bottom
                 if (hitPos.normal.y < 0 && (collisionInfo.gameObject.GetComponent<Piece>().tagPosition > tagPosition))
                 {
                     gameObject.tag = "bases";
+
                     gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.grey);
                     // gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
                     //ADDED HERE!
+                    //gameObject.tag = "noninteractable";
                     gameObject.GetComponent<Interactable>().enabled = false;
                 }
             }
 
         }
-        //sees if it is colliding with something its not supose to 
-        if (collisionInfo.collider.tag == "noninteractable")
+        //sees if it is colliding with something its not supose to
+        //NEW CODE HERE AS WELL 
+        if (collisionInfo.transform.CompareTag ("noninteractable"))
         {
             // and it isn't being held by the remote 
             if (rright.GetComponent<Hand>().triggerDown || rleft.GetComponent<Hand>().triggerDown)
             {
-               // Debug.Log("can not transform due to being held by remote");
+                Debug.Log("can not transform due to being held by remote");
                 return;
 
             }
-           //  Debug.Log(" transform to new position");
+            // Debug.Log(" transform to new position");
             //reassigns it to the last known tower 
             move(tower);
         }
@@ -94,9 +99,8 @@ public class Piece : MonoBehaviour
                  //gameObject.GetComponent<Rigidbody>().isKinematic = false;
                  gameObject.GetComponent<Interactable>().enabled = true;
 
-
                 }
-                 //gameObject.GetComponent<Interactable>().enabled = true;
+                 gameObject.GetComponent<Interactable>().enabled = true;
                  // Debug.Log("im leaving and this is why");
                  //  Debug.Log(other.transform.name);
              }

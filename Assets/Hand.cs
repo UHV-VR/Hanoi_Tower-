@@ -23,6 +23,7 @@ public class Hand : MonoBehaviour
     //needed to fix various bugs 
     public GameObject otherRemote;
     public GameObject[] towers;
+    public GameObject[] pieces;
     private int each = 0;
     // m = movement 
     private void Awake()
@@ -30,6 +31,7 @@ public class Hand : MonoBehaviour
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
         m_joint = GetComponent<FixedJoint>();
         towers = GameObject.FindGameObjectsWithTag("bases");
+        pieces = GameObject.FindGameObjectsWithTag("interactable");
     }
     // Update is called once per frame
     void Update()
@@ -80,10 +82,10 @@ public class Hand : MonoBehaviour
         {
             return;
         }
-            
+
         // sets the static to true 
         triggerDown = true;
-        
+
 
         //get nearest 
         m_CurrentInteractable = GetNearestInteractable();
@@ -118,7 +120,7 @@ public class Hand : MonoBehaviour
 
     public void Drop()
     {
-        
+
         //null check
         if (!m_CurrentInteractable)
         {
@@ -165,6 +167,28 @@ public class Hand : MonoBehaviour
 
         triggerDown = false;
         held = "null";
+       /* while (true)
+        {
+            each = 0;
+            foreach (GameObject piece in pieces)
+            {
+                if (!piece.GetComponent<Rigidbody>().IsSleeping())
+                {
+                    each++;
+                }
+            }
+            if (each == 3)
+            {
+                return;
+            }
+            if (each > 3)
+            {
+                Debug.Log("something went wrong, breaking look");
+                return;
+
+            }
+
+        }*/
 
     }
     /// <summary>
